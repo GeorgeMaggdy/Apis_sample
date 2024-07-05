@@ -83,14 +83,27 @@ class FileController extends Controller
         if (!$posts) {
 
             return $this->apiResponse(null, 'the post is not updated!', 400);
-        } 
+        }
         $posts->update([
 
             'title' => $request->title,
             'posted_by' => $request->posted_by
         ]);
-      
+
         return $this->apiResponse(new PostResource($posts), 'the post upated successfully!', 201);
 
     }
-} 
+    public function destroy($id)
+    {
+        $post = post::find($id);
+        if (!$post) {
+
+            return $this->apiResponse(null, 'the post you want to delete is not found!', 400);
+        }
+
+        $post->delete();
+
+        return $this->apiResponse(null, 'post has been deleted!', 201);
+
+    }
+}

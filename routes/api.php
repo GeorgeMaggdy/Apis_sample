@@ -22,10 +22,12 @@ use App\Http\Controllers\Api\FileController;
 //     return $request->user();
 // });
 
-Route::get('/anything',[FileController::class,'index']);
+Route::get('/anything', [FileController::class, 'index']);
 
-Route::get('/any/{id}',[FileController::class,'show']);
+Route::get('/any/{id}', [FileController::class, 'show']);
 
-Route::post('/anything',[FileController::class,'store']);
+Route::post('/anything', [FileController::class, 'store']);
 
-Route::post('/anything/{id}',[FileController::class,'update']);
+Route::post('/anything/{id}', [FileController::class, 'update']);
+
+Route::delete('/anything/{id}', [FileController::class, 'destroy']);
